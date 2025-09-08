@@ -46,14 +46,12 @@ ignore = [
     "ANN401",  # any
     "C901",    # too complex
     "COM812",  # missing trailing comma
-    "D",       # all of documentation
     "D105",    # magic methods
     "D203",    # blank line before docstring
     "D213",    # multi-line summary first line
     "D401",    # first line should be in imperative mood
     "E501",    # line-too-long
     "ERA001",  # commented-out code
-    "FIX001",  # line contains FIXME
     "ISC001",  # single line implicit string concat
     "N806",    # non-lowercase variable
     "PGH003",  # specific rule type ignore

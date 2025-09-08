@@ -13,8 +13,6 @@ if TYPE_CHECKING:
     from rdkit.Chem.rdchem import Mol
 
 
-# FIXME @ Hettie
-# Please annotate your types better
 class Reactions:
     water = "[#8]"
     glucuronic_acid = "[#6]-1[#6](-[#8]-[#1])-[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#6](=[#8])(-[#8][#1]))-[#8]-1"
