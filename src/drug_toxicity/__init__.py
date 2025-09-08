@@ -36,7 +36,7 @@ class Predictor:
             if self.validator.validate(smiles)
         ]
 
-    def predict_phase_i(self, compound: str) -> list:
+    def predict_phase_i(self, compound: str) -> list[str]:
         products = []
         comp = Chem.MolFromSmiles(compound)
         for reaction in liver.get_phase_i_reactions():
@@ -45,7 +45,7 @@ class Predictor:
 
         return self._filter_products(products)
 
-    def predict_phase_ii(self, filtered_phase_i_products: Iterable[str]) -> list:
+    def predict_phase_ii(self, filtered_phase_i_products: Iterable[str]) -> list[str]:
         products = []
         for reactant in filtered_phase_i_products:
             reactant2 = Chem.MolFromSmiles(reactant)
@@ -54,3 +54,9 @@ class Predictor:
                 products.extend(product)
 
         return self._filter_products(products)
+
+
+def predict_products(compound_smiles: str) -> list[str]:
+    predictor = Predictor()
+    phase_1_rxns = predictor.predict_phase_i(compound_smiles)
+    return predictor.predict_phase_ii(phase_1_rxns)
