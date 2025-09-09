@@ -1,8 +1,15 @@
-from DrugToxicity.reactions import Reactions
-class Liver:
-    
-    phaseI_reactions = [
+from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
+from drug_toxicity.reactions import Reactions
+
+if TYPE_CHECKING:
+    from collections.abc import Callable, Iterable
+
+
+def get_phase_i_reactions() -> Iterable[Callable]:
+    return [
         Reactions.aliphatic_hydroxylation,
         Reactions.aromatic_hydroxylation,
         Reactions.n_oxidation,
@@ -23,11 +30,12 @@ class Liver:
         Reactions.hydrolysis_epoxide,
         Reactions.hydrolysis_amide,
         Reactions.carbonyl_reduction,
-        Reactions.dehalogenation
-
+        Reactions.dehalogenation,
     ]
-    phaseII_reactions=[
 
+
+def get_phase_ii_reactions() -> Iterable[Callable]:
+    return [
         Reactions.o_glucuronidation_phenols_alcohols,
         Reactions.o_glucuronidation_carboxylic_acids,
         Reactions.o_glucuronidation_amines,
@@ -53,11 +61,5 @@ class Liver:
         Reactions.acetylation_hydrazine,
         Reactions.conjugation_glycine,
         Reactions.conjugation_glutamine,
-        Reactions.conjugation_taurine
+        Reactions.conjugation_taurine,
     ]
-
-    def get_phaseI_reactions(self):
-        return self.phaseI_reactions
-    
-    def get_phaseII_reactions(self):
-        return self.phaseII_reactions
