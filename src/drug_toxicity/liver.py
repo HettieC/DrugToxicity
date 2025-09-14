@@ -38,9 +38,9 @@ def get_phase_ii_reactions() -> Iterable[Callable]:
     return [
         Reactions.o_glucuronidation_phenols_alcohols,
         Reactions.o_glucuronidation_carboxylic_acids,
-        Reactions.o_glucuronidation_amines,
-        Reactions.o_glucuronidation_pyridine,
-        Reactions.o_glucuronidation_thiols,
+        Reactions.n_glucuronidation_amines,
+        Reactions.n_glucuronidation_pyridine,
+        Reactions.s_glucuronidation_thiols,
         Reactions.glucuronidation_alpha_diketones,
         Reactions.glucuronidation_alkynes,
         Reactions.sulfonation_alcohols,

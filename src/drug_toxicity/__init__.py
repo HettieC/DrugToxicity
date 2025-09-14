@@ -37,6 +37,7 @@ class Predictor:
         ]
 
     def predict_phase_i(self, compound: str) -> list[str]:
+        """Return the products of all phase I reactions from a compound in SMILES format."""
         products = []
         comp = Chem.MolFromSmiles(compound)
         for reaction in liver.get_phase_i_reactions():
@@ -46,6 +47,7 @@ class Predictor:
         return self._filter_products(products)
 
     def predict_phase_ii(self, filtered_phase_i_products: Iterable[str]) -> list[str]:
+        """Return the products of all phase II reactions from a compound in SMILES format."""
         products = []
         for reactant in filtered_phase_i_products:
             reactant2 = Chem.MolFromSmiles(reactant)
@@ -57,6 +59,12 @@ class Predictor:
 
 
 def predict_products(compound_smiles: str) -> list[str]:
+    """Return the products of all phase I and phase II reactions.
+    
+    Input a compound in SMILES format. Phase I reactions are enacted on this compound,
+    followed by phase II reactions on the phase I products. 
+    A list of all products is returned.
+    """
     predictor = Predictor()
     phase_1_rxns = predictor.predict_phase_i(compound_smiles)
     return predictor.predict_phase_ii(phase_1_rxns)

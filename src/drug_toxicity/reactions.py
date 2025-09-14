@@ -59,6 +59,7 @@ class Reactions:
 
     @classmethod
     def aliphatic_hydroxylation(cls, comp: Mol) -> list[Mol]:
+        """Perform aliphatic hydroxylation"""
         ethane = "[#6:1]-[#6:2]"
         ethanol = "[#6:1]-[#6:2]-[#8]"
 
@@ -74,6 +75,7 @@ class Reactions:
 
     @classmethod
     def aromatic_hydroxylation(cls, comp: Mol) -> list[Mol]:
+        """Perform aromatic hydroxylation"""
         benzene = "[#6:1]:1:[#6:2]:[#6:3]:[#6:4]:[#6:5]:[#6:6]:1"
         alkyl_phenol = "[#6:6](-[#8][#1]):1[#6:5]:[#6:4]:[#6:3]:[#6:2]:[#6:1]:1"
 
@@ -92,6 +94,7 @@ class Reactions:
 
     @classmethod
     def n_oxidation(cls, comp: Mol) -> list[Mol]:
+        """Perform n oxidation"""
         primary_amine = "[#7:2]-[#6:1]"
         n_oxide = "[#6:1]-[#7:2]([#8][#1])"
 
@@ -107,6 +110,7 @@ class Reactions:
 
     @classmethod
     def s_oxidation(cls, comp: Mol) -> list[Mol]:
+        """Perform s oxidation"""
         thioeter = "[#6:1]-[#16:2]-[#6:3]"
         sulfoxide = "[#6:1]-[#16:2](=[#8])-[#6:3]"
         matches = comp.GetSubstructMatches(Chem.MolFromSmarts(thioeter))
@@ -121,6 +125,7 @@ class Reactions:
 
     @classmethod
     def n_dealkylation(cls, comp: Mol) -> list[Mol]:
+        """Perform n dealkylation"""
         secondary_amine_no_ring = "[#6:1]!@[#7:2]!@[#6:3]"
 
         # primary Amine + Adelyhde
@@ -139,6 +144,7 @@ class Reactions:
 
     @classmethod
     def o_dealkylation(cls, comp: Mol) -> list[Mol]:
+        """Perform o dealkylation"""
         ether = "[#6:1]-[#8:2]-[#6:3]-[#6:4]"
         product = "[#6:1]-[#8:2]" + "." + "[#6:4]-[#6:3](=[#8])"
 
@@ -155,6 +161,7 @@ class Reactions:
 
     @classmethod
     def epoxidation(cls, comp: Mol) -> list[Mol]:
+        """Perform epoxidation"""
         alkene = "[#6:1]-[#6:2]=[#6:3]-[#6:4]"
         epoxyde = "[#6:1]-[#6:2]-1[#8]-[#6:3]:1-[#6:4]"
 
@@ -171,6 +178,7 @@ class Reactions:
 
     @classmethod
     def alcohol_oxidation(cls, comp: Mol) -> list[Mol]:
+        """Perform alcohol oxidation"""
         ethanol = "[#6:1]-[#6:2]-[#8]"
         aldehyde = "[#6:1]-[#6:2](=[#8])"
 
@@ -187,6 +195,7 @@ class Reactions:
 
     @classmethod
     def oxidative_deamination(cls, comp: Mol) -> list[Mol]:
+        """Perform oxidative deamination"""
         primary_amine = "[#7:2]-[#6:1]"
         # Aldehyde + Ammonia
         product = "[#6:1](=[#8])" + "." + "[#7:2]"
@@ -203,6 +212,7 @@ class Reactions:
 
     @classmethod
     def decarboxylation(cls, comp: Mol) -> list[Mol]:
+        """Perform decarboxylation"""
         propionic_acid = "[#6:1](=[#8])(-[#8])-[#6:2]-[#6:3]"
         product = "[#6:2]-[#6:3]" + "." + "[#6:1](=[#8])(=[#8])"
 
@@ -219,6 +229,7 @@ class Reactions:
 
     @classmethod
     def phenolamine_oxidation(cls, comp: Mol) -> list[Mol]:
+        """Perform phenolamine oxidation"""
         amino_phenol = "[#6:1](-[#7:8]):1:[#6:2]:[#6:3]:[#6:4](-[#8:7]):[#6:5]:[#6:6]:1"
         quinone_imine = (
             "[#6:1](=[#7:8])-1-[#6:2]=[#6:3]-[#6:4](=[#8:7])-[#6:5]=[#6:6]-1"
@@ -237,6 +248,7 @@ class Reactions:
 
     @classmethod
     def hydrolysis_ester(cls, comp: Mol) -> list[Mol]:
+        """Perform hydrolysis ester"""
         ester = "[#6:1]-[#6:2](=[#8:3])(-[#8:5]-[#6:6])"
         product = "[#6:6]-[#8:5]" + "." + "[#6:1]-[#6:2](=[#8:3])-[#8]"
 
@@ -253,6 +265,7 @@ class Reactions:
 
     @classmethod
     def deacetylation(cls, comp: Mol) -> list[Mol]:
+        """Perform deacetylation"""
         acetamide = "[#6:1]-[#6:2](=[#8:3])(-[#7:4](-[#6:5]))"
         # acetic_acid + primary amin
         product = "[#6:1]-[#6:2](=[#8:3])-[#8]" + "." + "[#7:4]-[#6:5]"
@@ -270,6 +283,7 @@ class Reactions:
 
     @classmethod
     def hydrolysis_aliphatic(cls, comp: Mol) -> list[Mol]:
+        """Perform aliphatic hydrolysis"""
         aliphatic = "[#6:1]-&!@[#6,#7:2]"
         product = "[#6:1]-[#8]" + "." + "[#6,#7:2]"
 
@@ -286,6 +300,7 @@ class Reactions:
 
     @classmethod
     def alcohol_dehydrogenation(cls, comp: Mol) -> list[Mol]:
+        """Perform alcohol dehydrogenation"""
         alcohol = "[#6:1]-[#8:2]"
         dehydrogenated_alcohol = "[#6:1]=[#8:2]"
 
@@ -302,6 +317,7 @@ class Reactions:
 
     @classmethod
     def nitro_reduction1(cls, comp: Mol) -> list[Mol]:
+        """Perform nitrophenol reduction"""
         nitrophenol = (
             "[#6:1]:1(-[#7+:7](-[#8-])(=[#8])):[#6:2]:[#6:3]:[#6:4]:[#6:5]:[#6:6]:1"
         )
@@ -320,6 +336,7 @@ class Reactions:
 
     @classmethod
     def nitro_reduction2(cls, comp: Mol) -> list[Mol]:
+        """Perform nitrophenol reduction"""
         nitrophenol = (
             "[#6:1]-1(=[#7+:7](-[#8-])(-[#8-]))-[#6:2]=[#6:3]-[#6:4]-[#6:5]=[#6:6]-1"
         )
@@ -338,6 +355,7 @@ class Reactions:
 
     @classmethod
     def hydrolysis_amide(cls, comp: Mol) -> list[Mol]:
+        """Perform amide hydrolysis"""
         carbon_acid_amide = "[#6:1]-[#6:2](=[#8:3])-[#7:4](-[#6:5])"
         product = "[#6:1]-[#6:2](=[#8:3])-[#8]" + "." + "[#7:4](-[#6:5])"
 
@@ -354,6 +372,7 @@ class Reactions:
 
     @classmethod
     def hydrolysis_epoxide(cls, comp: Mol) -> list[Mol]:
+        """Perform epoxide hydrolysis"""
         epoxide = "[#6:2](-[#6:1])-1[#8:3]-[#6:4]-1(-[#6:5])"
         hydrolysed_epoxide = "[#6:2]-[#6:1](-[#8:3])-[#6:4](-[#8])-[#6:5]"
 
@@ -370,6 +389,7 @@ class Reactions:
 
     @classmethod
     def dehalogenation(cls, comp: Mol) -> list[Mol]:
+        """Perform dehalogenation"""
         halogen = "[#6:1]-[F,Cl,Br,I:2]"
         product = "[#6:1]" + "." + "[F,Cl,Br,I:2]"
 
@@ -386,6 +406,7 @@ class Reactions:
 
     @classmethod
     def carbonyl_reduction(cls, comp: Mol) -> list[Mol]:
+        """Perform carbonyl reduction"""
         carbonyl = "[#6:1]-[#6:2](=[#8:4])-[#6:3]"
         alcohol = "[#6:1]-[#6:2](-[#8:4])-[#6:3]"
 
@@ -404,6 +425,7 @@ class Reactions:
     # Glucuronidation
     @classmethod
     def o_glucuronidation_phenols_alcohols(cls, comp: Mol) -> list[Mol]:
+        """Perform O-glucuronidation of phenols and alcohols"""
         methanol = "[#6:1]-[#8:2]"
         glucuronic_acid = "[#6]-1[#6](-[#8]-[#1])-[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#6](=[#8])(-[#8][#1]))-[#8]-1"
         product = "[#6](-[#8:2](-[#6:1]))-1[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#6](=[#8])(-[#8][#1]))-[#8]-1"
@@ -421,6 +443,7 @@ class Reactions:
 
     @classmethod
     def o_glucuronidation_carboxylic_acids(cls, comp: Mol) -> list[Mol]:
+        """Perform O-glucuronidation of carboxylic acids"""
         acid = "[#6:1](=[#8])-[#8]"
         glucuronic_acid = "[#6]-1[#6](-[#8]-[#1])-[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#6](=[#8])(-[#8][#1]))-[#8]-1"
         product = "[#6:1](=[#8])-[#8]-[#6]-1[#6](-[#8]-[#1])-[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#6](=[#8])(-[#8][#1]))-[#8]-1"
@@ -437,7 +460,8 @@ class Reactions:
         return final_substrates
 
     @classmethod
-    def o_glucuronidation_amines(cls, comp: Mol) -> list[Mol]:
+    def n_glucuronidation_amines(cls, comp: Mol) -> list[Mol]:
+        """Perform N-glucuronidation of amines"""
         matches_1 = comp.GetSubstructMatches(Chem.MolFromSmarts("[#7]-[#6]"))
         matches_2 = comp.GetSubstructMatches(Chem.MolFromSmarts("[#7](-[#6])(-[#6])"))
         matches_3 = comp.GetSubstructMatches(
@@ -470,7 +494,8 @@ class Reactions:
         return final_substrates
 
     @classmethod
-    def o_glucuronidation_pyridine(cls, comp: Mol) -> list[Mol]:
+    def n_glucuronidation_pyridine(cls, comp: Mol) -> list[Mol]:
+        """Perform N-glucuronidation of pyridines"""
         pyridine = "[#6:1]:1:[#6:2]:[#6:3]:[#6:4]:[#7:5]:[#6:6]:1"
         product = "[#6:1]:1:[#6:2]:[#6:3]:[#6:4]:[+#7:5](-[#6]-2[#6](-[#8]-[#1])-[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#6](=[#8])(-[#8][#1]))-[#8]-2):[#6:6]:1"
         react2 = Chem.MolFromSmarts(cls.glucuronic_acid)
@@ -486,7 +511,8 @@ class Reactions:
         return final_substrates
 
     @classmethod
-    def o_glucuronidation_thiols(cls, comp: Mol) -> list[Mol]:
+    def s_glucuronidation_thiols(cls, comp: Mol) -> list[Mol]:
+        """Perform S-glucuronidation of thiols"""
         thiols = "[#16:1]"
         product = "[#16:1]-[#6]-1[#6](-[#8]-[#1])-[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#6](=[#8])(-[#8][#1]))-[#8]-1"
         react2 = Chem.MolFromSmarts(cls.glucuronic_acid)
@@ -503,6 +529,7 @@ class Reactions:
 
     @classmethod
     def glucuronidation_alpha_diketones(cls, comp: Mol) -> list[Mol]:
+        """Perform C-glucuronidation at the alpha position of diketones"""
         diketones = "[#6:1]-[#6](=[#8])-[#6:2](-[#6:3])-[#6](=[#8])-[#6:4]"
         product = "[#6:1]-[#6](=[#8])-[#6:2](-[#6]-1[#6](-[#8]-[#1])-[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#6](=[#8])(-[#8][#1]))-[#8]-1)(-[#6:3])-[#6](=[#8])-[#6:4]"
         react2 = Chem.MolFromSmarts(cls.glucuronic_acid)
@@ -519,6 +546,7 @@ class Reactions:
 
     @classmethod
     def glucuronidation_alkynes(cls, comp: Mol) -> list[Mol]:
+        """Perform C-glucuronidation of alkynes"""
         alkene = "[#6:1]#[#6:2]"
         product = "[#6:1]#[#6:2]-[#6]-1[#6](-[#8]-[#1])-[#6](-[#8][#1])-[#6](-[#8][#1])-[#6](-[#6](=[#8])(-[#8][#1]))-[#8]-1"
         react2 = Chem.MolFromSmarts(cls.glucuronic_acid)
@@ -537,6 +565,7 @@ class Reactions:
 
     @classmethod
     def sulfonation_alcohols(cls, comp: Mol) -> list[Mol]:
+        """Perform sulfonation of alcohols"""
         alcohol = "[#6:1]-[#8:2]"
         product = "[#6:1]-[#8:2]-[#16](=[#8])([#8])-[#8-]"
         react2 = Chem.MolFromSmarts(cls.sulfon)
@@ -553,6 +582,7 @@ class Reactions:
 
     @classmethod
     def sulfonation_aromatic_n_oxides(cls, comp: Mol) -> list[Mol]:
+        """Perform sulfonation of aromatic N-oxides"""
         n_oxide = "[#6:1]:1:[#6:2]:[#6:3]:[#6:4]:[#7+:5](-[#8-:7]):[#6:6]:1"
         product = "[#6:1]:1:[#6:2]:[#6:3]:[#6:4]:[#7+](-[#8]-[#16](=[#8])([#8])-[#8-]):[#6:6]:1"
         react2 = Chem.MolFromSmarts(cls.sulfon)
@@ -570,6 +600,7 @@ class Reactions:
     # Glutathione
     @classmethod
     def gluthationylation_expoxides(cls, comp: Mol) -> list[Mol]:
+        """Perform gluthationylation of expoxides"""
         expoxides = "[#8:2]:1:[#6:1]:[#6:3]:1"
         product = "[#6:1](-[#8:2])-[#6:3]-[#16]-[#6](-[#7]-[#6](=[#8])-[#6]-[#6]-[#6](-[#7+])-[#6](=[#8])-[#8-])-[#6](=[#8])-[#7]-[#6]-[#6](=[#8])-[#8]"
         react2 = Chem.MolFromSmarts(cls.glutathione)
@@ -586,6 +617,7 @@ class Reactions:
 
     @classmethod
     def gluthationylation_alpha_beta_unsaturated_carbonlys(cls, comp: Mol) -> list[Mol]:
+        """Perform gluthationylation of alpha,beta-unsaturated carbonlys"""
         carbonyls = "[#6:1]=[#6:2]-[#6:3](=[#8])"
         product = "[#6:1](-[#16]-[#6](-[#7]-[#6](=[#8])-[#6]-[#6]-[#6](-[#7+])-[#6](=[#8])-[#8-])-[#6](=[#8])-[#7]-[#6]-[#6](=[#8])-[#8])=[#6:2]-[#6:3](=[#8])"
         react2 = Chem.MolFromSmarts(cls.glutathione)
@@ -602,6 +634,7 @@ class Reactions:
 
     @classmethod
     def gluthationylation_alkyl_halides(cls, comp: Mol) -> list[Mol]:
+        """Perform gluthationylation of alkyl halides"""
         alkyl_halides = "[#9,#17,#35,#53,#85,#117:1]-[#6:2]"
         product = "[#6:2]-[#16]-[#6](-[#7]-[#6](=[#8])-[#6]-[#6]-[#6](-[#7+])-[#6](=[#8])-[#8-])-[#6](=[#8])-[#7]-[#6]-[#6](=[#8])-[#8].[#9,#17,#35,#53,#85,#117:1]"
         react2 = Chem.MolFromSmarts(cls.glutathione)
@@ -616,9 +649,9 @@ class Reactions:
 
         return final_substrates
 
-    # TO DO
     @classmethod
     def gluthationylation_metal_halides(cls, comp: Mol) -> list[Mol]:
+        """Perform gluthationylation of metal halides"""
         metal_halides = "[#9,#17,#35,#53,#85,#117:1]-[]-[#9,#17,#35,#53,#85,#117:3]"
         product = ""
         react2 = Chem.MolFromSmarts(cls.glutathione)
@@ -635,6 +668,7 @@ class Reactions:
 
     @classmethod
     def gluthationylation_quinone_imines(cls, comp: Mol) -> list[Mol]:
+        """Perform gluthationylation of quinone imines"""
         quinone_imines = "[#7:2]=[#6:3]:1:[#6:4]:[#6:5]:[#6:6](=[#8]):[#6:7]:[#6:8]:1"
         product = "[#7:2]-[#6:1]:1:[#6:2]:[#6:3]:[#6:4](=[#8]):[#6:5]:[#6:6](-[#16]-[#6](-[#7]-[#6](=[#8])-[#6]-[#6]-[#6](-[#7+])-[#6](=[#8])-[#8+])-[#6](=[#8])-[#7]-[#6]-[#6](=[#8])-[#8]):1"
         react2 = Chem.MolFromSmarts(cls.glutathione)
@@ -652,6 +686,7 @@ class Reactions:
     # Methylation
     @classmethod
     def methylation_catechols(cls, comp: Mol) -> list[Mol]:
+        """Perform methylation of catechols"""
         catechols = "[#8]-[#6:1]:1:[#6:2](-[#8:7]):[#6:3]:[#6:4]:[#6:5]:[#6:6]:1"
         product = "[#8]-[#6:1]:1:[#6:2](-[#8:7]-[#6]):[#6:3]:[#6:4]:[#6:5]:[#6:6]:1"
         react2 = Chem.MolFromSmarts(cls.methyl_group)
@@ -668,6 +703,7 @@ class Reactions:
 
     @classmethod
     def methylation_hydroxyindoles(cls, comp: Mol) -> list[Mol]:
+        """Perform methylation of hydroxyindoles"""
         hydroxyindoles = "[#8]-[#6:1]:1:[#6:2]:[#6:3]:[#6:4]:2:[#6:7]:[#6:8]:[#7:9]:[#6:5]:2:[#6:6]:1"
         product = "[#6]-[#8:10]-[#6:1]:1:[#6:2]:[#6:3]:[#6:4]:2:[#6:7]:[#6:8]:[#7:9]:[#6:5]:2:[#6:6]:1"
         react2 = Chem.MolFromSmarts(cls.methyl_group)
@@ -684,6 +720,7 @@ class Reactions:
 
     @classmethod
     def methylation_amines(cls, comp: Mol) -> list[Mol]:
+        """Perform methylation of primary and secondary amines"""
         matches_1 = comp.GetSubstructMatches(Chem.MolFromSmarts("[#7]-[#6]"))
         matches_2 = comp.GetSubstructMatches(Chem.MolFromSmarts("[#7](-[#6])(-[#6])"))
 
@@ -707,6 +744,7 @@ class Reactions:
 
     @classmethod
     def methylation_pyridines(cls, comp: Mol) -> list[Mol]:
+        """Perform methylation of pyridines"""
         pyridines = "[#6:1]:1:[#6:2]:[#6:3]:[#6:4]:[#7]:[#6:6]:1"
         product = "[#6:1]:1:[#6:2]:[#6:3]:[#6:4]:[#7+](-[#6]):[#6:6]:1"
         react2 = Chem.MolFromSmarts(cls.methyl_group)
@@ -723,6 +761,7 @@ class Reactions:
 
     @classmethod
     def methylation_imidazoles(cls, comp: Mol) -> list[Mol]:
+        """Perform methylation imidazoles"""
         imidazoles = "[#6:1]:1:[#6:2]:[#7:3]:[#6:4]:[#7:5]:[#6:6]:1"
         product = "[#6:1]:1:[#6:2]:[#7:3]:[#6:4]:[#7:5](-[#6]):[#6:6]:1"
         react2 = Chem.MolFromSmarts(cls.methyl_group)
@@ -739,6 +778,7 @@ class Reactions:
 
     @classmethod
     def methylation_thiols(cls, comp: Mol) -> list[Mol]:
+        """Perform methylation thiols"""
         thiols = "[#6:1]-[#16:2]"
         product = "[#6:1]-[#16:2]-[#6]"
         react2 = Chem.MolFromSmarts(cls.methyl_group)
@@ -755,6 +795,7 @@ class Reactions:
 
     @classmethod
     def methylation_thiopurines(cls, comp: Mol) -> list[Mol]:
+        """Perform methylation thiopurines"""
         thiopurines = "[#7:1]:1:[#6:2]:[#7:3]:[#6:4]:2:[#7:7]:[#6:8]:[#7:9]:[#6:5]:2:[#6:6](-[#16:10]):1"
         product = "[#7:1]:1:[#6:2]:[#7:3]:[#6:4]:2:[#7:7]:[#6:8]:[#7:9]:[#6:5]:2:[#6:6](-[#16:10]-[#6]):1"
         react2 = Chem.MolFromSmarts(cls.methyl_group)
@@ -771,6 +812,7 @@ class Reactions:
 
     @classmethod
     def methylation_arsen(cls, comp: Mol) -> list[Mol]:
+        """Perform methylation of arsen"""
         arsen = "[#8:1]-[#33:2](-[#8:3])-[#8:4]"
         product = "[#8:1]=[#33:2](-[#8:3])(-[#6])-[#6]"
         react2 = Chem.MolFromSmarts(cls.methyl_group)
@@ -788,6 +830,7 @@ class Reactions:
     # Acetylation
     @classmethod
     def acetylation_first_amines(cls, comp: Mol) -> list[Mol]:
+        """Perform acetylation of first amines"""
         amine = "[#6:1]-[#7:2]"
         product = "[#6:1]-[#7:2]-[#6](=[#8])-[#6]"
         react2 = Chem.MolFromSmarts(cls.acetyl_group)
@@ -804,6 +847,7 @@ class Reactions:
 
     @classmethod
     def acetylation_hydrazine(cls, comp: Mol) -> list[Mol]:
+        """Perform acetylation of hydrazine"""
         hydrazine = "[#6:1]-[#7:2]-[#7:3]"
         product = "[#6:1]-[#7:2]-[#7:3]-[#6](=[#8])-[#6]"
         react2 = Chem.MolFromSmarts(cls.acetyl_group)
@@ -821,6 +865,7 @@ class Reactions:
     # Amino Acid Conjugation
     @classmethod
     def conjugation_glycine(cls, comp: Mol) -> list[Mol]:
+        """Perform conjugation of glycine"""
         acetyl = "[#6:1]-[#6](=[#8])-[#8:2]"
         glycine = "[#7]-[#6]-[#6](=[#8])-[#8]"
         product = "[#6:1]-[#6](=[#8])-[#7]-[#6]-[#6](=[#8])-[#8]"
@@ -838,6 +883,7 @@ class Reactions:
 
     @classmethod
     def conjugation_glutamine(cls, comp: Mol) -> list[Mol]:
+        """Perform conjugation of glutamine"""
         acetyl = "[#6:1]-[#6](=[#8])-[#8:2]"
         glutamine = "[#7]-[#6](-[#6]-[#6]-[#6](=[#8])-[#7])-[#6](=[#8])-[#8]"
         product = (
@@ -857,6 +903,7 @@ class Reactions:
 
     @classmethod
     def conjugation_taurine(cls, comp: Mol) -> list[Mol]:
+        """Perform conjugation of taurine"""
         acetyl = "[#6:1]-[#6](=[#8])-[#8:2]"
         taurine = "[#7]-[#6]-[#6]-[#16](=[#8])(=[#8])-[#8-]"
         product = "[#6:1]-[#6](=[#8])-[#7]-[#6]-[#6]-[#16](=[#8])(=[#8])-[#8-]"
