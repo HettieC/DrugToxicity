@@ -2,10 +2,16 @@
 
 Package for the simulation phase I and phase II metabolism of drugs using RDKit.
 
-A compound in SMILES format is required, and phase I and phase II reactions can be simulated using ```predict_phase_i``` and ```predict_phase_ii``` respectively. 
+A compound in SMILES format is required, and phase I and phase II reactions can be simulated. 
+
 ## Installation 
 
-You can install DrugToxicity using ```pip install git+https://github.com/HettieC/DrugToxicity```
+You can install the software from [PyPi](https://pypi.org/project/drug_toxicity/) using 
+```pip install drug_toxicity```
+
+## Documentation 
+
+Documentation can be found at [readthedocs](https://drugtoxicity.readthedocs.io/en/latest/).
 
 ## Issues and support
 If you encounter any issues, please contact us through the [issues](https://github.com/HettieC/DrugToxicity/issues) page.
