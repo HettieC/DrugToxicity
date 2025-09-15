@@ -55,7 +55,7 @@ class Predictor:
                 product = reaction(reactant2)
                 products.extend(product)
 
-        return self._filter_products(products)
+        return self._filter_products(products) 
 
 
 def predict_products(compound_smiles: str) -> list[str]:
@@ -66,5 +66,5 @@ def predict_products(compound_smiles: str) -> list[str]:
     A list of all products is returned.
     """
     predictor = Predictor()
-    phase_1_rxns = predictor.predict_phase_i(compound_smiles)
-    return predictor.predict_phase_ii(phase_1_rxns)
+    phase_1_mets = predictor.predict_phase_i(compound_smiles)
+    return phase_1_mets + predictor.predict_phase_ii(phase_1_mets)
