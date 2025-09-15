@@ -1,0 +1,4 @@
+mkdocs
+mkdocs-jupyter
+mkdocstrings
+jupyter_contrib_nbextensions

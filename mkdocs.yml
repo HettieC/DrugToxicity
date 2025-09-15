@@ -1,0 +1,15 @@
+site_name: drug_toxicity
+nav:
+  - Home: "index.md"
+  - Phase I: 01-paracetamol-phase-i.ipynb
+  - Phase II: 02-interaction.ipynb
+
+plugins:
+  - mkdocs-jupyter:
+      ignore_h1_titles: True
+      include_source: True
+  - mkdocstrings
+  - search
+
+theme:
+  name: readthedocs
