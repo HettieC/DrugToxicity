@@ -1,8 +1,7 @@
 site_name: drug_toxicity
 nav:
   - Home: "index.md"
-  - Phase I: 01-paracetamol-phase-i.ipynb
-  - Phase II: 02-interaction.ipynb
+  - Phase I and II: 01-phase-i-ii.ipynb
 
 plugins:
   - mkdocs-jupyter:
