@@ -9,7 +9,6 @@ plugins:
       ignore_h1_titles: True
       include_source: True
   - mkdocstrings
-  - search
 
 theme:
   name: readthedocs
