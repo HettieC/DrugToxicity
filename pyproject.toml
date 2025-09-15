@@ -8,7 +8,7 @@ dev = [
 ]
 
 [project]
-name = "drug-toxicity"
+name = "drug_toxicity"
 version = "0.1.0"
 authors = [
     { name = "Hester Chapman", email = "hester.chapman@btinternet.com" },
